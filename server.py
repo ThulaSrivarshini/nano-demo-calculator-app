@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,request,jsonify
 
 app = Flask(__name__)
 
@@ -23,4 +23,4 @@ def subtract():
     return jsonify({'result':result}),200
 
 if __name__ == '__main__':
-    app.run(port=8080,host='0.0.0.0')
+    app.run(debug=True)

@@ -1,28 +1,25 @@
-from flask import Flask,request,jsonify
+from flask import Flask
 
 app = Flask(__name__)
 
 
 @app.route("/calculator/greeting", methods=['GET'])
 def greeting():
-    return 'Hello world', 200
+    return 'Hello world!'
     return ''
 
 @app.route("/calculator/add", methods=['POST'])
 def add():
-    data=request.json
-    first=data['first']
-    second=data['second']
-    result=first+second
-    return jsonify({'result':result}), 200
+    numbers = request.json
+    response = Result(numbers['first'] + numbers['second'])
+    return jsonify(response)
     return ''
 
 @app.route("/calculator/subtract", methods=['POST'])
 def subtract():
-    first=data['first']
-    second=data['second']
-    result=first-second
-    return jsonify({'result':result}), 200
+    numbers = request.json
+    response = Result(numbers['first'] - numbers['second'])
+    return jsonify(response)
     return ''
 
 if __name__ == '__main__':
